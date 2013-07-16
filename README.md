@@ -1,5 +1,4 @@
-<h1>agenda Ruby, Sinatra e MongoDB</h1>
-===========================
+<h1>Agenda Ruby, Sinatra e MongoDB</h1>
 
 Agenda desenvolvida para testes. Utilizado Ruby, Sinatra e MongoDB
 
