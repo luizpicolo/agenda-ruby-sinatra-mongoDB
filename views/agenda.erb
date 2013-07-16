@@ -1,0 +1,70 @@
+<h1>Agenda Telefônica</h1>
+<div class="row-fluid">
+	<div class="span6">
+		<form method="get" action="/agenda">
+			<input type="text" name="busca" class="input-medium search-query">
+			<input type="submit" class="btn" value="Buscar">
+		</form>
+	</div>
+	<div class="span6 text-right">
+		<a href="#myModal" role="button" class="btn" data-toggle="modal">Adicionar Contato</a>
+	</div>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Nome</th>
+			<th>Telefone</th>
+			<th>Data de Cadastro</th>
+			<th class="text-center">Ações</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%@dadosContatos.each do |contato|%>
+		<tr>
+			<td><%= contato.nome %></td>
+			<td><%= contato.telefone %></td>
+			<td><%= contato.data %></td>
+			<td class="text-center"><a data-toggle="modal" href="agenda/<%= contato.id %>" data-target="#myModal">
+			<input type="submit" value="&#10000" />
+			</a>
+			<form action="/agenda/<%= contato.id %>" method="post" class="form-zero inline">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="&#10006" />
+			</form></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="pagination text-right">
+	<ul>
+		<li>
+			<a href="/agenda?pag=<%=@pagAnterior%>"><<</a>
+		</li>
+		<li>
+			<a href="/agenda?pag=<%=@pagProximo%>">>></a>
+		</li>
+	</ul>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			×
+		</button>
+		<h3 id="myModalLabel">Contato</h3>
+	</div>
+	<div class="modal-body">
+		<form method="post" action="/agenda">
+			<label>Nome</label>
+			<input type="text" name="nome" placeholder="Adicionar Nome" required>
+			<label>Telefone</label>
+			<input type="text" name="telefone" id="fone" placeholder="(99) 9999-9999" required>
+			<div class="text-right">
+				<input class="btn btn-large btn-primary" type="submit" value="Cadastrar">
+			</div>
+		</form>
+	</div>
+</div>

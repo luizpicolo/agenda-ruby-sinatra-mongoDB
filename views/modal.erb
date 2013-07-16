@@ -1,0 +1,11 @@
+<form method="post" action="/agenda">
+	<label>Nome</label>
+	<input type="hidden" name="_method" value="put">
+	<input type="hidden" name="id" value="<%=@dadosContato.id%>">   
+	<input type="text" name="nome" value="<%=@dadosContato.nome%>" required>
+	<label>Telefone</label>
+	<input type="text" name="telefone" id="fone" value="<%=@dadosContato.telefone%>" required>
+	<div class="text-right">
+		<input class="btn btn-large btn-primary" type="submit" value="Atualizar">
+	</div>
+</form>

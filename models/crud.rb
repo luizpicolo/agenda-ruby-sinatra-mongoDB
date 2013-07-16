@@ -1,0 +1,4 @@
+require 'mongo_mapper'
+
+
+
