@@ -1,2 +1,2 @@
 #init file
-require_relative "agenda"
+require_relative "phone_book"

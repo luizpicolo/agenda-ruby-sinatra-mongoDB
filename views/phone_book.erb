@@ -1,0 +1,70 @@
+<h1>Phone Book</h1>
+<div class="row-fluid">
+	<div class="span6">
+		<form method="get" action="/phone_book">
+			<input type="text" name="search" class="input-medium search-query">
+			<input type="submit" class="btn" value="Search">
+		</form>
+	</div>
+	<div class="span6 text-right">
+		<a href="#myModal" role="button" class="btn" data-toggle="modal">Add contact</a>
+	</div>
+</div>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Phone</th>
+			<th>Created date</th>
+			<th class="text-center">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @contacts.each do |contact| %>
+		<tr>
+			<td><%= contact.name %></td>
+			<td><%= contact.phone %></td>
+			<td><%= contact.date %></td>
+			<td class="text-center"><a data-toggle="modal" href="phone_book/<%= contact.id %>" data-target="#myModal">
+			<input type="submit" value="&#10000" />
+			</a>
+			<form action="/phone_book/<%= contact.id %>" method="post" class="form-zero inline">
+				<input type="hidden" name="_method" value="delete">
+				<input type="submit" value="&#10006" />
+			</form></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<div class="pagination text-right">
+	<ul>
+		<li>
+			<a href="/phone_book?pag=<%= @next_page %>"><<</a>
+		</li>
+		<li>
+			<a href="/phone_book?pag=<%= @prev_page %>">>></a>
+		</li>
+	</ul>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+			×
+		</button>
+		<h3 id="myModalLabel">Contact</h3>
+	</div>
+	<div class="modal-body">
+		<form method="post" action="/phone_book">
+			<label>Name</label>
+			<input type="text" name="name" placeholder="Add name" required>
+			<label>Phone</label>
+			<input type="text" name="phone" id="phone" placeholder="(99) 9999-9999" required>
+			<div class="text-right">
+				<input class="btn btn-large btn-primary" type="submit" value="Save">
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,11 +1,11 @@
-<form method="post" action="/agenda">
-	<label>Nome</label>
+<form method="post" action="/phone_book">
+	<label>Name</label>
 	<input type="hidden" name="_method" value="put">
-	<input type="hidden" name="id" value="<%=@dadosContato.id%>">   
-	<input type="text" name="nome" value="<%=@dadosContato.nome%>" required>
-	<label>Telefone</label>
-	<input type="text" name="telefone" id="fone" value="<%=@dadosContato.telefone%>" required>
+	<input type="hidden" name="id" value="<%= @contact.id %>">
+	<input type="text" name="name" value="<%= @contact.name %>" required>
+	<label>Phone</label>
+	<input type="text" name="phone" id="phone" value="<%= @contact.phone %>" required>
 	<div class="text-right">
-		<input class="btn btn-large btn-primary" type="submit" value="Atualizar">
+		<input class="btn btn-large btn-primary" type="submit" value="Update">
 	</div>
 </form>
