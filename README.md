@@ -4,7 +4,7 @@ Phone book developed for Ruby tests used, Sinatra and MongoDB
 
 ## How to used
 
-    # install MongoDB
+    # install MongoDB if necessary
     sudo apt-get install mongodb
 
     # Clone this repository
